@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday Mandhu! 🎉</title>
+<style>
+  :root {
+    --pink: #dd7aa1;
+    --purple: #9d88d9;
+    --lavender: #d9c8ff;
+    --gold: #d7a95c;
+    --mint: #7bb9ae;
+    --bg: #fffafc;
+    --card-bg: rgba(255, 255, 255, 0.78);
+    --text: #2e2131;
+    --sub: #614d5e;
+    --border: rgba(110, 88, 124, 0.16);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #201421;
+      --card-bg: #2c1e2e;
+      --text: #ffe9f2;
+      --sub: #cbb3c2;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #201421;
+    --card-bg: #2c1e2e;
+    --text: #ffe9f2;
+    --sub: #cbb3c2;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100%;
+    background:
+      radial-gradient(circle at top left, rgba(247, 169, 197, 0.35), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(205, 185, 255, 0.4), transparent 30%),
+      linear-gradient(180deg, #fffafc 0%, #fff6fb 45%, #fdfaff 100%);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    transition: background 0.4s ease;
+  }
+
+  .confetti {
+    position: fixed;
+    top: -10px;
+    z-index: 5;
+    pointer-events: none;
+    border-radius: 2px;
+    opacity: 0.9;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px 60px;
+    overflow: hidden;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+    margin: 0 0 10px;
+    background: linear-gradient(90deg, #f7a9c5 0%, #d7b5ff 50%, #a8d9d3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    animation: pop 1s ease;
+  }
+  @keyframes pop {
+    0% { transform: scale(0.6); opacity: 0; }
+    60% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+  .hero p.sub {
+    color: #52415b;
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 500;
+  }
+  .balloons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+  .balloon {
+    width: 46px;
+    height: 58px;
+    border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+    animation: float 3.5s ease-in-out infinite;
+    position: relative;
+  }
+  .balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    width: 1px;
+    height: 22px;
+    background: var(--sub);
+    opacity: 0.5;
+  }
+  .balloon:nth-child(1) { background: var(--pink); animation-delay: 0s; }
+  .balloon:nth-child(2) { background: var(--purple); animation-delay: 0.4s; }
+  .balloon:nth-child(3) { background: var(--gold); animation-delay: 0.8s; }
+  .balloon:nth-child(4) { background: #6ee7d8; animation-delay: 1.2s; }
+  .balloon:nth-child(5) { background: var(--pink); animation-delay: 1.6s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+
+  section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .distance-card {
+    background: rgba(255,255,255,0.92);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 18px 45px rgba(159, 131, 177, 0.12);
+    backdrop-filter: blur(8px);
+    color: #2b1b2d;
+  }
+  .distance-card > div,
+  .distance-card p {
+    color: #2b1b2d;
+  }
+  .distance-card .route {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    margin: 14px 0;
+    flex-wrap: wrap;
+    color: #2b1b2d;
+  }
+  .route .line {
+    flex: 1;
+    max-width: 100px;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--pink), var(--pink) 6px, transparent 6px, transparent 12px);
+  }
+  .route .plane { font-size: 1.6rem; animation: fly 2.5s ease-in-out infinite; }
+  @keyframes fly {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #c95d8f;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .center-sub { text-align: center; color: #59475d; margin-bottom: 30px; font-weight: 500; }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 18px;
+  }
+  .flip-card {
+    perspective: 1000px;
+    height: 160px;
+    cursor: pointer;
+  }
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-front, .flip-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px;
+    font-weight: 600;
+  }
+  .flip-front {
+    background: linear-gradient(135deg, #f7c3d5 0%, #d9c8ff 50%, #cfeee8 100%);
+    color: #2a1b2a;
+    font-size: 1rem;
+    box-shadow: 0 12px 24px rgba(179, 149, 201, 0.18);
+    font-weight: 800;
+  }
+  .flip-back {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid var(--border);
+    color: #2b1b2d;
+    transform: rotateY(180deg);
+    font-size: 0.92rem;
+    font-weight: 600;
+    box-shadow: 0 12px 24px rgba(163, 137, 182, 0.12);
+  }
+
+  .letter-wrap { text-align: center; }
+  .envelope {
+    width: 220px;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    background: linear-gradient(135deg, #d9c8ff 0%, #f7bfd1 50%, #f8d8a7 100%);
+    border-radius: 18px;
+    box-shadow: 0 18px 30px rgba(180, 148, 191, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #402d3c;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .envelope:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 22px 34px rgba(180, 148, 191, 0.22); }
+  .envelope::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-top: 75px solid rgba(255,255,255,0.25);
+  }
+  .letter-content {
+    display: none;
+    background: rgba(255,255,255,0.82);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    margin-top: 24px;
+    text-align: left;
+    line-height: 1.7;
+    color: #352737;
+    box-shadow: 0 18px 40px rgba(146, 118, 161, 0.12);
+    animation: unfold 0.5s ease;
+  }
+  .letter-content.show { display: block; }
+  @keyframes unfold {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 60px;
+    color: var(--sub);
+    font-size: 0.9rem;
+  }
+  footer .heart { color: var(--pink); }
+</style>
+</head>
+<body>
+
+<div id="confetti-container"></div>
+
+<section class="hero">
+  <h1>Happy Birthday, Mandhu! 🎂</h1>
+  <p class="sub">One more year of being absolutely unforgettable. This little corner of the internet is just for you.</p>
+  <div class="balloons">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+  </div>
+</section>
+
+<section>
+  <div class="distance-card">
+    <div>India</div>
+    <div class="route">
+      <span class="line"></span>
+      <span class="plane">✈️</span>
+      <span class="line"></span>
+    </div>
+    <div>USA</div>
+    <p style="margin-top:14px; color:var(--sub);">Different time zones, same heart. No distance is too far to say I'm thinking of you today.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Reasons You're Amazing</h2>
+  <p class="center-sub">Tap a card to flip it ✨</p>
+  <div class="cards-grid" id="cardsGrid"></div>
+</section>
+
+<section>
+  <h2>A Little Something</h2>
+  <p class="center-sub">Click the envelope</p>
+  <div class="letter-wrap">
+    <div class="envelope" id="envelopeButton" onclick="toggleLetter()">💌 Open Me</div>
+    <div class="letter-content" id="letterContent">
+      <p>Dear Mandhu,</p>
+      <p>Three years ago, we met at Infosys Trivandrum and somehow, from day one, the vibe between us was just <em>right</em>. No awkward getting-to-know-you phase, no forced small talk. Just an instant rapport that felt like we'd known each other forever.</p>
+      <p>We became flatmates, commuted to office together every single day, and even attempted cooking together (results may vary 😅🍳). But more than any of that you were the one who showed up. When no one else was around, you were there. You cared for me in every situation, no questions asked.</p>
+      <p>I'll be honest, I'm the careless one. Careless with a lot of things in life. But when it comes to you, I've always been careful. Because some people you just don't want to get wrong.</p>
+      <p>Even after you moved to the USA two years ago, even though we can't talk as often as we used to, nothing has changed. You're still my best friend. You're still the first person I search for when life throws something at me, good or bad. Distance couldn't touch what we have. We're still in the same vibe, always.</p>
+      <p>Thank you for supporting me, for having me, for being exactly who you are.</p>
+      <p>Happy birthday, Mandhu. I love you endlessly. 🎂💕</p>
+      <p>With all my love,<br>Your best friend</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Made with <span class="heart">♥</span> for Mandhu's special day
+</footer>
+
+<script>
+  // Confetti
+  const colors = ['#ff6b9d', '#a855f7', '#ffd166', '#6ee7d8', '#ff9a3c'];
+  const container = document.getElementById('confetti-container');
+  for (let i = 0; i < 40; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti';
+    const size = 6 + Math.random() * 6;
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.animationDuration = (4 + Math.random() * 4) + 's';
+    el.style.animationDelay = (Math.random() * 5) + 's';
+    container.appendChild(el);
+  }
+
+  // Flip cards
+  const reasons = [
+    "You've shown me what it really means when women uplift women 💪💖🌸",
+    "Your effort to make people happy is a whole superpower 💖✨🙌",
+    "Your bravery in every step, and that attitude you carry is absolutely unmatched 🔥",
+    "You make ordinary days fun 🌟",
+    "You give the best advice 🧠",
+    "You light up every room you walk into ✨",
+    "Your kindness makes people feel seen 💖",
+    "You're one of a kind, Mandhu 🫶"
+  ];
+  const grid = document.getElementById('cardsGrid');
+  reasons.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'flip-card';
+    card.innerHTML = `
+      <div class="flip-inner">
+        <div class="flip-front">Reason #${i + 1}</div>
+        <div class="flip-back">${r}</div>
+      </div>`;
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+    grid.appendChild(card);
+  });
+
+  function toggleLetter() {
+    const letter = document.getElementById('letterContent');
+    const envelope = document.getElementById('envelopeButton');
+    letter.classList.toggle('show');
+    envelope.textContent = letter.classList.contains('show') ? '💌 Close me' : '💌 Open Me';
+  }
+
+</script>
+
+</body>
+</html>
